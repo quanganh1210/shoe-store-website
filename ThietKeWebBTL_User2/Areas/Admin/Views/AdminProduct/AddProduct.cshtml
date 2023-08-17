@@ -1,0 +1,69 @@
+﻿@model ThietKeWebBTL_User2.Models.Product
+
+@{
+	ViewData["Title"] = "AddProduct";
+}
+
+
+<div class="card">
+	<div class="card-body">
+		<h1>AddProduct</h1>
+		<hr />
+		<div class="row">
+			<div class="">
+				<form asp-action="AddProduct" method="post">
+					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+					<div class="form-group">
+						<label asp-for="Name" class="control-label"></label>
+						<input asp-for="Name" class="form-control" />
+						<span asp-validation-for="Name" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="Description" class="control-label"></label>
+						<input asp-for="Description" class="form-control" />
+						<span asp-validation-for="Description" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="ReleaseDate" class="control-label"></label>
+						<input asp-for="ReleaseDate" class="form-control" />
+						<span asp-validation-for="ReleaseDate" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="SeoTitle" class="control-label"></label>
+						<input asp-for="SeoTitle" class="form-control" />
+						<span asp-validation-for="SeoTitle" class="text-danger"></span>
+					</div>
+					@*<div class="form-group">
+						<label asp-for="CreatedBy" class="control-label"></label>
+						<input asp-for="CreatedBy" class="form-control" />
+						<span asp-validation-for="CreatedBy" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="ModifiedDate" class="control-label"></label>
+						<input asp-for="ModifiedDate" class="form-control" />
+						<span asp-validation-for="ModifiedDate" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="ModifiedBy" class="control-label"></label>
+						<input asp-for="ModifiedBy" class="form-control" />
+						<span asp-validation-for="ModifiedBy" class="text-danger"></span>
+					</div>*@
+					<div class="form-group">
+						<input type="submit" value="Create" class="btn btn-primary" />
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div>
+			<a asp-action="Index">Back to List</a>
+		</div>
+	</div>
+</div>
+@section Scripts{
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+}
+
+

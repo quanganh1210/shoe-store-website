@@ -1,0 +1,93 @@
+﻿@model ThietKeWebBTL_User2.Models.ProductDetail
+
+@{
+	ViewData["Title"] = "AddProductDetail";
+}
+
+<div class="card">
+	<div class="card-body">
+		<h1>Add Product Detail</h1>
+		<hr />
+		<div class="row">
+			<div class="col-md-4">
+				<form asp-action="AddProductDetail" enctype="multipart/form-data">
+					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+					<div class="form-group">
+						<label asp-for="Quantity" class="control-label"></label>
+						<input asp-for="Quantity" class="form-control" />
+						<span asp-validation-for="Quantity" class="text-danger"></span>
+					</div>
+					@*<div class="form-group">
+					<label asp-for="Image" class="control-label"></label>
+					<input asp-for="Image" class="form-control" />
+					<span asp-validation-for="Image" class="text-danger"></span>
+					</div>*@
+					<div class="form-control">
+						<label asp-for="formFileImage" class="control-label"></label>
+						<input asp-for="formFileImage" class="form-control" />
+						<span asp-validation-for="formFileImage" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="ProductId" class="control-label"></label>
+						<select asp-for="ProductId" class="form-control chosen-select" asp-items="ViewBag.ProductId"></select>
+					</div>
+					<div class="form-group">
+						<label asp-for="ColorId" class="control-label"></label>
+						<select asp-for="ColorId" class="form-control chosen-select" asp-items="ViewBag.ColorId"></select>
+					</div>
+					<div class="form-group">
+						<label asp-for="SizeId" class="control-label"></label>
+						<select asp-for="SizeId" class="form-control chosen-select" asp-items="ViewBag.SizeId"></select>
+					</div>
+					<div class="form-group">
+						<label asp-for="CreatedBy" class="control-label"></label>
+						<input asp-for="CreatedBy" class="form-control" />
+						<span asp-validation-for="CreatedBy" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="ModifiedDate" class="control-label"></label>
+						<input asp-for="ModifiedDate" class="form-control" />
+						<span asp-validation-for="ModifiedDate" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="ModifiedBy" class="control-label"></label>
+						<input asp-for="ModifiedBy" class="form-control" />
+						<span asp-validation-for="ModifiedBy" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="UnitSupplierPrice" class="control-label"></label>
+						<input asp-for="UnitSupplierPrice" class="form-control" />
+						<span asp-validation-for="UnitSupplierPrice" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="UnitSellingPrice" class="control-label"></label>
+						<input asp-for="UnitSellingPrice" class="form-control" />
+						<span asp-validation-for="UnitSellingPrice" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="Discount" class="control-label"></label>
+						<input asp-for="Discount" class="form-control" />
+						<span asp-validation-for="Discount" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Create" class="btn btn-primary" />
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div>
+			<a asp-action="ProductDetailTable">Back to List</a>
+		</div>
+	</div>
+</div>
+@section Scripts{
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+
+}
+
+
+
+

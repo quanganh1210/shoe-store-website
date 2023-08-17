@@ -1,0 +1,118 @@
+﻿@model IEnumerable<ProductViewModelIdle>
+
+@{
+    ViewData["Title"] = "ProductDetailTable";
+}
+
+<div class="col-lg-12 stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h1>Product detail</h1>
+
+            <a asp-controller="AdminProduct" asp-action="AddProductDetail" type="button" class="btn btn-outline-success btn-icon-text btn-sm addNew">
+                <i class="mdi mdi-upload btn-icon-prepend"></i> Add product
+            </a>
+            @*<button type="button" class="btn btn-success btn-sm addNew">Add product</button>*@
+            <table class="table table-bordered" id="ProductDetailTable">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Product.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProductDetail.Quantity)
+                        </th>
+                        
+                        
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProductDetail.Status)
+                        </th>
+                        
+                        
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProductDetail.UnitSupplierPrice)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProductDetail.UnitSellingPrice)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProductDetail.Discount)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ColorName)
+                        </th>
+                        
+                        <th>
+                            @Html.DisplayNameFor(model => model.SizeName)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int i = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        i++;
+                        string className = "";
+                        if (i == 1)
+                            className = "table-info";
+                        else if (i == 2)
+                            className = "table-warning";
+                        else if (i == 3)
+                            className = "table-danger";
+                        else if (i == 4)
+                            className = "table-success";
+                        else
+                        {
+                            className = "table-primary";
+                            i -= 5;
+                        }
+
+
+
+                        <tr class="@className">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Product.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductDetail.Quantity)
+                            </td>
+                            
+                            
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductDetail.Status)
+                            </td>
+                            
+                            
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductDetail.UnitSupplierPrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductDetail.UnitSellingPrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductDetail.Discount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ColorName)
+                            </td>
+                            
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SizeName)
+                            </td>
+                            <td>
+                                <a asp-controller="AdminProduct" asp-action="EditProductDetail" asp-route-productDetailID="@item.ProductDetail.ProductDetailId" type="button" class="btn btn-primary btn-sm">Edit</a>
+								@*<a asp-controller="AdminProduct" asp-action="ProductDetail" asp-route-productID="@item.ProductId" type="button" class="btn btn-info btn-sm">Detail</a>*@
+                                <a asp-controller="AdminProduct" asp-action="DeleteProductDetail" asp-route-productDetailID="@item.ProductDetail.ProductDetailId" type="button" class="btn btn-danger btn-sm">Delete</a>
+							</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

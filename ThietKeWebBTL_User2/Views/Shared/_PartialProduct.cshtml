@@ -1,0 +1,87 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model ProductViewModel
+<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+	<!-- Block2 -->
+	<div class="block2">
+		<div class="block2-pic hov-img0">
+			<img id="mainImage_@Model.Product.ProductId" src="~/ProductImages/@Model.ListProductDetail[0].Image" alt="IMG-PRODUCT">
+
+			<a asp-controller="Product" asp-action="ProductDetail" asp-route-productID="@Model.Product.ProductId" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+				Quick View
+			</a>
+		</div>
+		<div class="row block2-txt flex-w flex-t p-t-14">
+			@{
+				if (Model.ListProductDetail.Count <= 4)
+				{
+					foreach (var item in Model.ListProductDetail)
+					{
+							<div class="column">
+								<img class="colorImage" data-productid="@Model.Product.ProductId" data-productdetailid="@item.ProductDetailId" src="~/ProductImages/@item.Image" alt="Snow" style="width:100%">
+							</div>
+					}
+				}
+				else
+				{
+					int numColorLeft = Model.ListProductDetail.Count - 4;
+					for (int i = 0; i < 4; ++i)
+					{
+							<div class="column">
+								<img class="colorImage" data-productid="@Model.Product.ProductId" data-productdetailid="@Model.ListProductDetail[i].ProductDetailId" src="~/ProductImages/@Model.ListProductDetail[i].Image" alt="Snow" style="width:100%">
+							</div>
+					}
+						<div class="column">
+							+@numColorLeft
+						</div>
+				}
+			}
+
+
+		</div>
+		<div class="block2-txt flex-w flex-t p-t-14">
+			<div class="block2-txt-child1 flex-col-l ">
+				<a class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+					@Model.Product.Name
+				</a>
+				<div>
+					@{
+						var firstPD = Model.ListProductDetail[0];
+						if (firstPD.Discount != 0)
+						{
+							var priceBeforeDiscount = "$" + String.Format("{0:0.##}", firstPD.UnitSellingPrice);
+							var discount = firstPD.Discount.ToString() + "% off";
+							var currentPrice = firstPD.UnitSellingPrice * (1 - (Decimal)firstPD.Discount / 100);
+								<span id="currentPrice_@Model.Product.ProductId" class="stext-105 cl3">
+									$@String.Format("{0:0.##}", currentPrice)
+								</span>
+								<span id="priceBeforeDiscount_@Model.Product.ProductId" class=" priceBeforeDiscount">
+									@priceBeforeDiscount
+								</span>
+								<span id="discount_@Model.Product.ProductId" class=" discount">
+									@discount
+								</span>
+						}
+						else {
+								<span class="stext-105 cl3">
+									$@String.Format("{0:0.##}", firstPD.UnitSupplierPrice)
+								</span>
+						}
+					}
+					
+				</div>
+
+			</div>
+
+			<div class="block2-txt-child2 flex-r p-t-3">
+				<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+					<img class="icon-heart1 dis-block trans-04" src="../../images/icons/icon-heart-01.png" alt="ICON">
+					<img class="icon-heart2 dis-block trans-04 ab-t-l" src="../../images/icons/icon-heart-02.png" alt="ICON">
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+

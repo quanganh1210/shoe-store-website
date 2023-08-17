@@ -1,0 +1,64 @@
+﻿@model Account
+
+@{
+    ViewData["Title"] = "EditProfile";
+}
+
+
+<div class="bg0 m-t-23 ">
+    <div class="container">
+        <h1>Edit Profile</h1>
+       
+        <hr />
+        <form asp-action="EditProfile" enctype="multipart/form-data" method="post">
+            <input type="hidden" asp-for="Email" />
+            <input type="hidden" asp-for="Role" />
+            <input type="hidden" asp-for="Status" />
+            <input type="hidden" asp-for="CreatedDate" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            
+            <div class="form-control">
+                <label asp-for="formFileImage" class="control-label"></label>
+                <input asp-for="formFileImage" class="form-control" />
+                <span asp-validation-for="formFileImage" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="formFileImage" class="control-label"></label>
+                <div class="custom-file">
+                    <input asp-for="formFileImage" class="custom-file-input" />
+                    <label class="custom-file-label">Choose file</label>
+                </div>
+                <span asp-validation-for="formFileImage" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+        <div class="p-b-10">
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>
+
+
+

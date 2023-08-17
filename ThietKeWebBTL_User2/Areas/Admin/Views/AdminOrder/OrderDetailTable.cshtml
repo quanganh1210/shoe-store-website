@@ -1,0 +1,81 @@
+﻿@model IEnumerable<OrderDetailViewModel>
+
+@{
+	ViewData["Title"] = "OrderDetailTable";
+}
+
+<div class="col-lg-12 stretch-card">
+	<div class="card">
+		<div class="card-body">
+			<h1>OrderDetail</h1>
+
+			@*<button type="button" class="btn btn-success btn-sm addNew">Add product</button>*@
+			<table class="table table-bordered" id="tableProduct">
+				<thead>
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model => model.ProductName)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.ColorName)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.SizeName)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.OrderDetail.Quantity)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.OrderDetail.UnitSellingPrice)
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					@{
+						int i = 0;
+					}
+					@foreach (var item in Model)
+					{
+						i++;
+						string className = "";
+						if (i == 1)
+							className = "table-info";
+						else if (i == 2)
+							className = "table-warning";
+						else if (i == 3)
+							className = "table-danger";
+						else if (i == 4)
+							className = "table-success";
+						else
+						{
+							className = "table-primary";
+							i -= 5;
+						}
+
+
+
+						<tr class="@className">
+							<td>
+								@Html.DisplayFor(modelItem => item.ProductName)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.ColorName)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.SizeName)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.OrderDetail.Quantity)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.OrderDetail.UnitSellingPrice)
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
